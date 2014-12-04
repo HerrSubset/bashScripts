@@ -1,0 +1,15 @@
+#!/bin/bash
+
+BACKUP_DIR=/run/media/pyjamas/3884-2401/Backup/
+
+echo "backing up to $BACKUP_DIR"
+echo "backing up Documents"
+rsync -ah /home/pyjamas/Documents $BACKUP_DIR
+echo "backing up Music"
+rsync -ah /home/pyjamas/Music $BACKUP_DIR
+echo "backing up Pictures"
+rsync -ah /home/pyjamas/Pictures $BACKUP_DIR
+echo "backing up .thunderbird"
+rsync -ah /home/pyjamas/.thunderbird $BACKUP_DIR
+echo "backing up workspaces"
+rsync -ah /home/pyjamas/workspaces $BACKUP_DIR
