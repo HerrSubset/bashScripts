@@ -1,6 +1,14 @@
 #!/bin/bash
 
 BACKUP_DIR=/run/media/pyjamas/3884-2401/Backup/
+E_DIRNOTFOUND=74
+
+
+if [[ ! -d "${BACKUP_DIR}" ]] ; then
+   #exit when backup directory is not found
+   echo "Backup directory is not found"
+   exit $E_DIRNOTFOUND
+fi
 
 echo "backing up to $BACKUP_DIR"
 echo "backing up Documents"
