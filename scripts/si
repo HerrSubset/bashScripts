@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#Scripts Initializer
+#makes files in this folder executable and writes a line to .bashrc, adding
+#this folder to $PATH
+
+CURDIR=`pwd`
+
+EXPORTLINE='export    PATH=$PATH:'"$CURDIR"
+
+#check if line already exists in .bashrc and add it if that's not the case
+grep "$EXPORTLINE" ~/.bashrc
+GREP_EXIT=$?
+if [[ $GREP_EXIT -eq 1 ]]
+then
+echo -e "\n$EXPORTLINE\n" >> ~/.bashrc
+fi
+
+#make all scripts executable
+chmod u+x *

@@ -1,7 +1,19 @@
 #!/bin/bash
 
-#add tests to check if first parameter exists
-PROJECTNAME=$1
+#Python Project Setup
+#Creates a basic folder and file structure for a python project
+
+PROJECTNAME=""
+
+if [ -n "$1" ]
+    # Test whether command-line argument is present (non-empty).
+    then
+    PROJECTNAME=$1
+else
+    echo "No project name was given."
+    echo "Exiting..."
+    exit 1
+fi
 
 #create folder structure
 mkdir -p $PROJECTNAME/$PROJECTNAME

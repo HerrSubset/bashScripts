@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#backupScript
+#uses rsync to back up folders to external storage
+
 BACKUP_DIR=/run/media/pyjamas/3884-2401/Backup/
 E_DIRNOTFOUND=74
 
