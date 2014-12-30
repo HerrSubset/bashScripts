@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#add tests to check if first parameter exists
+PROJECTNAME=$1
+
+#create folder structure
+mkdir -p $PROJECTNAME/$PROJECTNAME
+mkdir $PROJECTNAME/bin $PROJECTNAME/docs $PROJECTNAME/tests
+
+#create readme and setup.py files
+cd $PROJECTNAME
+touch README.md
+echo "#$PROJECTNAME" >> README.md
+echo "Write project readme here..." >> README.md
+
+touch setup.py
+echo -e "try:\n\tfrom setuptools import setup" >> setup.py
+echo -e "except ImportError:\n\tfrom distutils.core import setup\n" >> setup.py
+echo -e "config = {\n\t'description': 'My Project',\n\t'author':'HerrSubset'" >> setup.py
+echo -e "\t'url':'URL to get it at',\n\t'download_url': 'Where to download it'," >> setup.py
+echo -e "\t'author_email':'my email',\n\t'version':'0.0.1'," >> setup.py
+echo -e "\t'install_requires':['nose'],\n\t'packages':['$PROJECTNAME']," >> setup.py
+echo -e "\t'scripts':[],\n\t'name':'$PROJECTNAME'\n}\n" >> setup.py
+echo -e "setup(**config)" >> setup.py
+
+#make test templates
+cd ./tests
+touch __init__.py
+touch "$PROJECTNAME"_tests.py
+echo -e "from nose.tools import *\nimport $PROJECTNAME\n" >> "$PROJECTNAME"_tests.py
+echo -e "def setup():\n\tprint 'SETUP!'\n" >> "$PROJECTNAME"_tests.py
+echo -e "def teardown():\n\tprint 'TEARDOWN!'\n" >> "$PROJECTNAME"_tests.py
+echo -e "def test_basic():\n\tprint 'I RAN!'\n" >> "$PROJECTNAME"_tests.py
+#echo -e "" >> __init__.py
+
+#create python programming starting point
+cd ../$PROJECTNAME
+touch __init__.py
